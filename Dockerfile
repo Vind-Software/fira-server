@@ -9,7 +9,17 @@ RUN dotnet publish -o build
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-EXPOSE 5000
-ENV ASPNETCORE_URLS=http://+:5000
+
+# Copying the development self signed ssl certificate, in order to enable https on the dev env. 
+COPY ./dev-cert.pfx /etc/ssl/cert/
+# If the permissions 
+RUN chmod 755 /etc/ssl/cert/dev-cert.pfx
+ENV Kestrel__Certificates__Default__Path=/etc/ssl/cert/dev-cert.pfx
+ENV Kestrel__Certificates__Default__Password=S56Ojm
+
 COPY --from=fira-server-webserver-build-env /app/build .
+ENV ASPNETCORE_URLS=http://+:5000;https://+:5001
+
+EXPOSE 5000
+EXPOSE 5001
 ENTRYPOINT [ "dotnet", "fira-server.dll" ]
