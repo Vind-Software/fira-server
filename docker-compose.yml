@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  application:
+    image: dev/vind-software/fira-server/application:0.2
+    build: 
+      context: ./
+      dockerfile: ./Infra/Application/Dockerfile.dev
+    ports:
+      - "5001:5001"
+      - "5000:5000"
+    depends_on:
+      - postgres
+  postgres:
+    image: dev/vind-software/fira-server/postgres:0.2
+    build: 
+      context: ./
+      dockerfile: ./Infra/Postgres/Dockerfile.dev
