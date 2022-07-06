@@ -5,13 +5,23 @@ services:
     build: 
       context: ./
       dockerfile: ./Infra/Application/Dockerfile.dev
-    ports:
-      - "5001:5001"
-      - "5000:5000"
     depends_on:
-      - postgres
-  postgres:
-    image: dev/vind-software/fira-server/postgres:0.2
+      - relational-db
+      - reverse-proxy
+  relational-db:
+    image: dev/vind-software/fira-server/relational-db:0.2
     build: 
       context: ./
       dockerfile: ./Infra/Postgres/Dockerfile.dev
+    ports:
+      - "5432:5432"
+  reverse-proxy:
+    image: dev/vind-software/fira-server/reverse-proxy:0.2
+    build: 
+      context: ./
+      dockerfile: ./Infra/Nginx/Dockerfile.dev
+    ports:
+      - "80:80"
+networks:
+  default:
+    name: fira-server-dev-network
