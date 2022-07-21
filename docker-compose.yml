@@ -1,25 +1,29 @@
 version: "3.9"
 services:
   application:
-    image: dev/vind-software/fira-server/application:0.2
+    image: dev/vind-software/fira-server/application:00.00.001
     build: 
       context: ./
-      dockerfile: ./Infra/Application/Dockerfile.dev
+      dockerfile: ./Infra/Images/Application/Dockerfile.dev
     depends_on:
       - relational-db
       - reverse-proxy
   relational-db:
-    image: dev/vind-software/fira-server/relational-db:0.2
+    image: dev/vind-software/fira-server/relational-db:00.00.001
     build: 
       context: ./
-      dockerfile: ./Infra/Postgres/Dockerfile.dev
+      dockerfile: ./Infra/Images/Postgres/Dockerfile.dev
     ports:
       - "5432:5432"
+    volumes:
+      - type: bind
+        source: ./Infra/Images/Postgres/DevData
+        target: /var/lib/postgresql/data
   reverse-proxy:
-    image: dev/vind-software/fira-server/reverse-proxy:0.2
+    image: dev/vind-software/fira-server/reverse-proxy:00.00.001
     build: 
       context: ./
-      dockerfile: ./Infra/Nginx/Dockerfile.dev
+      dockerfile: ./Infra/Images/Nginx/Dockerfile.dev
     ports:
       - "80:80"
 networks:
