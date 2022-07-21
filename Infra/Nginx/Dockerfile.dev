@@ -1,3 +1,0 @@
-FROM nginx:1.23.0
-
-COPY ./Infra/Nginx/Configs/VHosts/fira-server-dev.conf /etc/nginx/conf.d/fira-server-dev.conf

@@ -1,0 +1,6 @@
+{
+    "author":"Guilherme-mm",
+    "application-version":"00.00.001",
+    "creation-date":"2022-06-07",
+    "description":"Installs the baseline of the database schema, consisting of the schema changes log table"
+}

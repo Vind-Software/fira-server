@@ -1,4 +1,0 @@
-FROM postgres:14.4
-
-ENV POSTGRES_PASSWORD=admin
-ENV POSTGRES_DB defaultdb
