@@ -4,28 +4,47 @@ services:
     image: dev/vind-software/fira-server/application:00.00.001
     build: 
       context: ./
-      dockerfile: ./Infra/Images/Application/Dockerfile.dev
+      dockerfile: ./infra/Images/Application/Dockerfile.dev
     depends_on:
       - relational-db
       - reverse-proxy
+
   relational-db:
     image: dev/vind-software/fira-server/relational-db:00.00.001
     build: 
       context: ./
-      dockerfile: ./Infra/Images/Postgres/Dockerfile.dev
+      dockerfile: ./infra/Images/Postgres/Dockerfile.dev
     ports:
       - "5432:5432"
     volumes:
       - type: bind
-        source: ./Infra/Images/Postgres/DevData
+        source: ./infra/Images/Postgres/DevData
         target: /var/lib/postgresql/data
+
   reverse-proxy:
     image: dev/vind-software/fira-server/reverse-proxy:00.00.001
     build: 
       context: ./
-      dockerfile: ./Infra/Images/Nginx/Dockerfile.dev
+      dockerfile: ./infra/Images/Nginx/Dockerfile.dev
     ports:
       - "80:80"
+
+  application-unit-test:
+    image: dev/vind-software/fira-server/application-unit-test:00.00.001
+    build:
+      context: ./
+      dockerfile: ./infra/Images/Tests/Dockerfile.unit
+    profiles:
+      - unitTests
+  
+  application-integration-test:
+    image: dev/vind-software/fira-server/application-integration-test:00.00.001
+    build:
+      context: ./
+      dockerfile: ./infra/Images/Tests/Dockerfile.integration
+    profiles:
+      - integrationTests
+
 networks:
   default:
     name: fira-server-dev-network

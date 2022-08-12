@@ -4,8 +4,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>fira_server</RootNamespace>
-    <UseAppHost>False</UseAppHost>
   </PropertyGroup>
 
   <ItemGroup>
