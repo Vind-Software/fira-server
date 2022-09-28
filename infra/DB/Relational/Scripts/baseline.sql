@@ -1,5 +1,7 @@
 CREATE SCHEMA application; 
 
+COMMENT ON SCHEMA application IS 'Holds application level configuration and utility tables';
+
 CREATE TABLE application.schema_change_log (
     "id" SERIAL PRIMARY KEY,
     "databaseVersion" VARCHAR(10) UNIQUE NOT NULL,
