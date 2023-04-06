@@ -1,6 +1,6 @@
 {
     "author":"Guilherme-mm",
     "application-version":"00.00.001",
-    "creation-date":"2022-07-18",
-    "description":"Creates a table to store application level configuration keys"
+    "creation-date":"2023-04-04",
+    "description":"Creates the initial database structures"
 }
