@@ -8,6 +8,11 @@ services:
     depends_on:
       - relational-db
       - reverse-proxy
+    environment:
+      FIRASERVER_DB__Relational__Host: ${FIRASERVER_DB__Relational__Host}
+      FIRASERVER_DB__Relational__Database: ${FIRASERVER_DB__Relational__Database}
+      FIRASERVER_DB__Relational__Username: ${FIRASERVER_DB__Relational__Username}
+      FIRASERVER_DB__Relational__Password: ${FIRASERVER_DB__Relational__Password}
 
   relational-db:
     image: dev/vind-software/fira-server/relational-db:00.00.001
