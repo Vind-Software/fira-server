@@ -2,3 +2,6 @@ bin/
 obj/
 .vscode/
 Infra/Images/Postgres/DevData
+.vs/
+src/.vs/
+test/.vs/
