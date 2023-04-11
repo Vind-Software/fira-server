@@ -22,4 +22,6 @@ COPY --from=fira-server-webserver-build-env /app/build .
 ENV ASPNETCORE_URLS=http://+:5000
 ENV ASPNETCORE_ENVIRONMENT=Development
 
-ENTRYPOINT [ "dotnet", "FiraServer.api.dll" ]
+ENV FIRASERVER_DB__Relational__Host=relational-db
+
+ENTRYPOINT [ "dotnet", "FiraServer.Api.dll" ]
