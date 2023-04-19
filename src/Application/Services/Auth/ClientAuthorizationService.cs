@@ -3,7 +3,7 @@ using FiraServer.Application.Interfaces.Auth;
 
 namespace FiraServer.Application.Services.Auth;
 
-public class ClientAuthorizationService : IClientAuthorizationService
+public class ClientAuthorizationService
 {
     private readonly IClientScopeGrantRepository _ClientScopeGrantRepository;
     public ClientAuthorizationService(IClientScopeGrantRepository applicationScopeRepository) 

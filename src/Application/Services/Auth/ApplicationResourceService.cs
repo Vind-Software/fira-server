@@ -3,7 +3,7 @@ using FiraServer.Application.Interfaces.Auth;
 
 namespace FiraServer.Application.Services.Auth;
 
-public class ApplicationResourceService : IApplicationResourceService
+public class ApplicationResourceService
 {
     private IApplicationResourceRepository _ApplicationResourceRepository;
 

@@ -8,7 +8,7 @@ namespace FiraServer.api.Middlewares.Authorization
 {
     public class Oauth2Middleware
     {
-        private readonly Dictionary<string, List<string>> _requiredHeaders;
+        private readonly Dictionary<string, List<string>> _RequiredHeaders;
         private readonly RequestDelegate _next;
         private ClientAuthenticationService? _ClientAuthenticationService;
         private ClientAuthorizationService? _ClientAuthorizationService;
@@ -18,7 +18,7 @@ namespace FiraServer.api.Middlewares.Authorization
         {
             this._next = nextDelegate;
 
-            this._requiredHeaders = new Dictionary<string, List<string>>()
+            this._RequiredHeaders = new Dictionary<string, List<string>>()
             {
                 {"client", new List<string>(){"clientId"}},
                 {"authenticating_client", new List<string>(){"clientId", "clientSecret"}},
@@ -38,7 +38,6 @@ namespace FiraServer.api.Middlewares.Authorization
                 ApplicationResource resource = this.IdentifyApplicationResource(context);
 
                 AuthorizationResult authResult = this.AuthorizeClient(context, client, resource);
-                //AuthorizationResult authResult = new AuthorizationResult();
                 if (true || authResult.Status)
                 {
                     await _next(context);
@@ -82,14 +81,14 @@ namespace FiraServer.api.Middlewares.Authorization
             }
         }
 
-        private List<string> CheckMissingRequestHeaders(HttpContext Context, string headersGroup)
+        private List<string> CheckMissingRequestHeaders(HttpContext context, string headersGroup)
         {
-            List<string> requiredHeaders = this._requiredHeaders[headersGroup];
+            List<string> requiredHeaders = this._RequiredHeaders[headersGroup];
             List<string> missingHeaders = new List<string>();
 
             foreach (string headerName in requiredHeaders)
             {
-                string headerContent = Context.Request.Headers[headerName];
+                string headerContent = context.Request.Headers[headerName];
                 if (string.IsNullOrEmpty(headerContent)) 
                 {
                     missingHeaders.Add(headerName);
