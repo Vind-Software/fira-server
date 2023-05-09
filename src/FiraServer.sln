@@ -5,6 +5,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{98AEA857-7052-48E6-A803-1B53D24629C6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiraServer.Api", "Api\FiraServer.Api.csproj", "{091712D3-EAF6-418A-99A4-3FB58815FD04}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16B1224D-185B-4623-9958-EB1C6A8937CC} = {16B1224D-185B-4623-9958-EB1C6A8937CC}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiraServer.Application", "Application\FiraServer.Application.csproj", "{16B1224D-185B-4623-9958-EB1C6A8937CC}"
 EndProject

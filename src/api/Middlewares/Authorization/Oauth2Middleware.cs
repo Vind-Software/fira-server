@@ -1,7 +1,5 @@
-using FiraServer.Application.Interfaces.Auth;
-using FiraServer.Application.Entities.Auth;
 using FiraServer.api.Common.Exceptions;
-using System.Web;
+using FiraServer.Application.Entities.Auth;
 using FiraServer.Application.Services.Auth;
 
 namespace FiraServer.api.Middlewares.Authorization
