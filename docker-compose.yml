@@ -13,6 +13,20 @@ services:
       FIRASERVER_DB__Relational__Database: ${FIRASERVER_DB__Relational__Database}
       FIRASERVER_DB__Relational__Username: ${FIRASERVER_DB__Relational__Username}
       FIRASERVER_DB__Relational__Password: ${FIRASERVER_DB__Relational__Password}
+    volumes:
+        - ./src:/app
+        - /app/Api/obj/ 
+        - /app/Api/bin/
+        - /app/Application/obj/ 
+        - /app/Application/bin/
+        - /app/Core/Domain/obj/ 
+        - /app/Core/Domain/bin/
+        - /app/Core/Service/obj/ 
+        - /app/Core/Service/bin/
+        - /app/DI/obj/ 
+        - /app/DI/bin/
+        - /app/Infra/Dal/obj/ 
+        - /app/Infra/Dal/bin/
 
   relational-db:
     image: dev/vind-software/fira-server/relational-db:00.00.001
